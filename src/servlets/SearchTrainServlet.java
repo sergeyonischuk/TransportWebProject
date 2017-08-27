@@ -11,10 +11,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.PassengerTrain;
+import texts.View;
 import trainTest.FakeTrainCreator;
 
 @WebServlet("/TransportServlet")
-public class TransportServlet extends HttpServlet {
+public class SearchTrainServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ConcurrentHashMap<String, PassengerTrain> trains = new ConcurrentHashMap<>();
 	private FakeTrainCreator fakeTrainC = new FakeTrainCreator();
@@ -39,17 +40,17 @@ public class TransportServlet extends HttpServlet {
 		PrintWriter out = response.getWriter();
 		
 		if (trainNumber.equals("")) {
-			out.println("Please, enter train's number");
+			out.println(View.INPUT_NUMBER_REQUEST);
 		} else if (trains.containsKey(trainNumber)) {
-			out.println("<h3>information about train № " + trainNumber + ": </h3>");
-			out.println("number of cars: " + train.getList().size());
-			out.print("locomotive: " + train.getLocomotive().getFuel());
+			out.println("<h3>" + View.TRAIN_INFO + trainNumber + ": </h3>");
+			out.println(View.CARS_QUANTITY + train.getList().size());
+			out.print(View.LOCOMOTIVE_INFO + train.getLocomotive().getFuel());
 		} else {
-			out.print("<h3>Train with number " + trainNumber + " is absent in base</h3>");
+			out.print("<h3>" + View.INVALID_SEARCH_TRAIN + trainNumber + "</h3>");
 		}
 		
 		out.print("<br>");
-		out.println("<a href='http://localhost:8080/TransportWebProject/TrainSearch.html'>Back on main search page</a>");
+		out.println("<a href='http://localhost:8080/TransportWebProject/TrainSearch.html'>" + View.GO_BACK_SEARCH + "</a>");
 		
 		out.close();
 	}

@@ -1,7 +1,7 @@
 package model;
 
 import enums.Comfortableness;
-import view.View;
+import texts.View;
 
 public class PassengerCoach extends Car {
 	

@@ -6,7 +6,7 @@ import java.util.Objects;
 
 import model.PassengerCoach;
 import model.PassengerTrain;
-import view.View;
+import texts.View;
 
 public class TrainService {
 	

@@ -8,7 +8,7 @@ import java.util.Objects;
 import enums.Comfortableness;
 import enums.Fuel;
 import model.*;
-import view.View;
+import texts.View;
 
 public class PassengerTrainFabric {
 	

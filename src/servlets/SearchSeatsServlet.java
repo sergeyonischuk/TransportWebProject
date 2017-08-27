@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.PassengerCoach;
 import model.PassengerTrain;
 import services.TrainService;
+import texts.View;
 import trainTest.FakeTrainCreator;
 
 /**
@@ -40,9 +41,9 @@ public class SearchSeatsServlet extends HttpServlet {
 		
 		String trainNumber = request.getParameter("trainNumber");
 		if (trainNumber.equals("")) {
-			out.println("Please, enter train's number");
+			out.println(View.INPUT_NUMBER_REQUEST);
 		} else if (!trains.containsKey(trainNumber)) {
-			out.print("<h3>We have no train in base with number " + trainNumber + " </h3>");
+			out.print("<h3>" + View.INVALID_SEARCH_TRAIN + trainNumber + "</h3>");
 		} else if (trains.containsKey(trainNumber)) {
 			PassengerTrain train = trains.get(trainNumber);
 			int min = 0;
@@ -59,19 +60,19 @@ public class SearchSeatsServlet extends HttpServlet {
 				
 				out.print(coachList);
 			} else {
-				out.print("<h3>Min and max values must be numbers</h3>");
+				out.print("<h3>" + View.INVALID_PARAM_TYPE + "</h3>");
 			}
 
 			
 			if(min > max) {
-				out.println("min value must be less than max");
+				out.println(View.MAX_LESS_THAN_MIN);
 			}
 			
 //			List<PassengerCoach> coachList = ts.findCoachByNumberOfSeats(train, min, max);
 //		
 //			out.print(coachList);
 		}
-		out.println("<br><a href='http://localhost:8080/TransportWebProject/SeatsSearch.html'>Back on main search page</a>");
+		out.println("<br><a href='http://localhost:8080/TransportWebProject/SeatsSearch.html'>" + View.GO_BACK +"</a>");
 		out.close();
 	}
 

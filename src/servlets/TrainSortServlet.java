@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Car;
 import model.PassengerTrain;
 import services.TrainService;
+import texts.View;
 import trainTest.FakeTrainCreator;
 
 /**
@@ -43,17 +44,17 @@ public class TrainSortServlet extends HttpServlet {
 		String trainNumber = request.getParameter("trainNumber");
 		
 		if (trainNumber.equals("")) {
-			out.println("Please, enter train's number");
+			out.println(View.INPUT_NUMBER_REQUEST);
 		} else if (!trains.containsKey(trainNumber)) {
-			out.print("<h3>We have no train in base with number " + trainNumber + " </h3>");
+			out.print("<h3>" + View.INVALID_SEARCH_TRAIN + trainNumber + "</h3>");
 		} else if (trains.containsKey(trainNumber)) {
 			PassengerTrain train = trains.get(trainNumber);
 			Collections.sort(train.getList(), new Car.SortByComfortableness());
-			out.println("<h3>Train cars was sorted</h3>");
+			out.println("<h3>" + View.SUCCES_SORTED + "</h3>");
 			out.println(train.getList());
 		}
 		
-		out.println("<a href='http://localhost:8080/TransportWebProject/StartPage.html'>Back on main page</a>");
+		out.println("<a href='http://localhost:8080/TransportWebProject/StartPage.html'>" + View.GO_BACK_SEARCH + "</a>");
 		out.close();
 	}
 
