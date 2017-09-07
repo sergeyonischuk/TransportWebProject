@@ -3,8 +3,7 @@ package model;
 import enums.Comfortableness;
 
 public class BuffetCar extends Car {
-	int passengerCapacity;
-
+        private int passengerCapacity;
 	public BuffetCar(int passengerCapacity, Comfortableness comfortableness, int maxWeight) {
 		super(comfortableness, maxWeight);
 		this.passengerCapacity = passengerCapacity;
