@@ -5,8 +5,8 @@ import java.util.Comparator;
 import enums.Comfortableness;
 
 public abstract class Car {
-	Comfortableness comfortableness;
-	int maxWeightKG; 
+        private Comfortableness comfortableness;
+        private int maxWeightKG;
 	
 	public Car(Comfortableness comfortableness, int maxWeightKG) {
 		this.comfortableness = comfortableness;
