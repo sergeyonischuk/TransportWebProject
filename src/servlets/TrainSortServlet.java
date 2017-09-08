@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import model.Car;
 import model.PassengerTrain;
 import services.TrainService;
-import texts.View;
+import texts.Messages;
 import trainTest.FakeTrainCreator;
 
 /**
@@ -26,8 +26,7 @@ public class TrainSortServlet extends HttpServlet {
 	private ConcurrentHashMap<String, PassengerTrain> trains = new ConcurrentHashMap<>();
 	private FakeTrainCreator fakeTrainC = new FakeTrainCreator();
 	TrainService ts = new TrainService();
-	
-	
+
 	@Override
 	public void init() throws ServletException {
 		PassengerTrain train1 = fakeTrainC.createPassengerTrain(1);
@@ -36,29 +35,32 @@ public class TrainSortServlet extends HttpServlet {
 		trains.put(String.valueOf(train2.getTrainNumber()), train2);
 	}
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		
 		response.setContentType("text/html;charset=utf-8");
 		PrintWriter out = response.getWriter();
-		
 
 		String trainNumber = request.getParameter("trainNumber");
-		
+
 		if (trainNumber.equals("")) {
-			out.println(View.INPUT_NUMBER_REQUEST);
+			out.println(Messages.INPUT_NUMBER_REQUEST);
 		} else if (!trains.containsKey(trainNumber)) {
-			out.print("<h3>" + View.INVALID_SEARCH_TRAIN + trainNumber + "</h3>");
+			out.print("<h3>" + Messages.INVALID_SEARCH_TRAIN + trainNumber + "</h3>");
 		} else if (trains.containsKey(trainNumber)) {
 			PassengerTrain train = trains.get(trainNumber);
 			Collections.sort(train.getList(), new Car.SortByComfortableness());
-			out.println("<h3>" + View.SUCCES_SORTED + "</h3>");
+			out.println("<h3>" + Messages.SUCCES_SORTED + "</h3>");
 			out.println(train.getList());
 		}
-		
-		out.println("<a href='http://localhost:8080/TransportWebProject/StartPage.html'>" + View.GO_BACK_SEARCH + "</a>");
+
+		out.println(
+				"<a href='http://localhost:8080/TransportWebProject/StartPage.html'>" + Messages.GO_BACK_SEARCH + "</a>");
 		out.close();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 

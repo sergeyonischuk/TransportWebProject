@@ -4,8 +4,7 @@ import enums.Fuel;
 
 public class Locomotive {
 	private Fuel fuel;
-	
-	
+
 	public Locomotive(Fuel fuel) {
 		this.fuel = fuel;
 	}
@@ -22,6 +21,5 @@ public class Locomotive {
 	public String toString() {
 		return "Locomotive [fuel=" + fuel + "]";
 	}
-	
-	
+
 }

@@ -5,9 +5,9 @@ import java.util.Comparator;
 import enums.Comfortableness;
 
 public abstract class Car {
-        private Comfortableness comfortableness;
-        private int maxWeightKG;
-	
+	protected Comfortableness comfortableness;
+	protected int maxWeightKG;
+
 	public Car(Comfortableness comfortableness, int maxWeightKG) {
 		this.comfortableness = comfortableness;
 		this.maxWeightKG = maxWeightKG;
@@ -20,7 +20,7 @@ public abstract class Car {
 	public void setComfortableness(Comfortableness comfortableness) {
 		this.comfortableness = comfortableness;
 	}
-	
+
 	public int getMaxWeightKG() {
 		return maxWeightKG;
 	}
@@ -29,13 +29,11 @@ public abstract class Car {
 		this.maxWeightKG = maxWeightKG;
 	}
 
-
-
 	/**
 	 * Sorting cars by comfortableness (ordinal).
 	 *
 	 */
-	public static class SortByComfortableness implements Comparator<Car>{
+	public static class SortByComfortableness implements Comparator<Car> {
 		public int compare(Car o1, Car o2) {
 			return o1.getComfortableness().compareTo(o2.getComfortableness());
 		}

@@ -1,10 +1,10 @@
 package model;
 
 import enums.Comfortableness;
-import texts.View;
+import texts.Messages;
 
 public class PassengerCoach extends Car {
-	
+
 	private static final int SEATS_FIRST_CLASS = 45;
 	private static final int SEATS_SECOND_CLASS = 60;
 	private static final int SEATS_COUPE = 30;
@@ -12,27 +12,27 @@ public class PassengerCoach extends Car {
 
 	private int passengerSeats;
 	private int cargoCapacityWeight;
-	
+
 	public PassengerCoach(Comfortableness comfortableness) {
 
 		super(comfortableness, 6000);
 
-			switch (comfortableness) {
-			case FIRST_CLASS:
-				this.passengerSeats = SEATS_FIRST_CLASS;
-				break;
-			case SECOND_CLASS:
-				this.passengerSeats = SEATS_SECOND_CLASS;
-				break;
-			case COUPE:
-				this.passengerSeats = SEATS_COUPE;
-				break;
-			case PREMIUM:
-				this.passengerSeats = SEATS_PREMIUM;
-				break;
-			case FREIGHT:
-				throw new IllegalArgumentException(View.CAR_TYPE_ERROR);
-			}
+		switch (comfortableness) {
+		case FIRST_CLASS:
+			this.passengerSeats = SEATS_FIRST_CLASS;
+			break;
+		case SECOND_CLASS:
+			this.passengerSeats = SEATS_SECOND_CLASS;
+			break;
+		case COUPE:
+			this.passengerSeats = SEATS_COUPE;
+			break;
+		case PREMIUM:
+			this.passengerSeats = SEATS_PREMIUM;
+			break;
+		case FREIGHT:
+			throw new IllegalArgumentException(Messages.CAR_TYPE_ERROR);
+		}
 	}
 
 	public int getPassengerSeats() {
@@ -53,8 +53,7 @@ public class PassengerCoach extends Car {
 
 	@Override
 	public String toString() {
-		return "<br>PassengerCoach <br>comfortableness=" + comfortableness 
-				+ "<br>" + "passengerSeats=" + passengerSeats
-				+ "<br>" + "cargoCapacityWeight=" + cargoCapacityWeight +"<br>";
+		return "<br>PassengerCoach <br>comfortableness=" + comfortableness + "<br>" + "passengerSeats=" + passengerSeats
+				+ "<br>" + "cargoCapacityWeight=" + cargoCapacityWeight + "<br>";
 	}
 }

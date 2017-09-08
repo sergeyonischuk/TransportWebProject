@@ -3,7 +3,8 @@ package model;
 import enums.Comfortableness;
 
 public class BuffetCar extends Car {
-        private int passengerCapacity;
+	private int passengerCapacity;
+
 	public BuffetCar(int passengerCapacity, Comfortableness comfortableness, int maxWeight) {
 		super(comfortableness, maxWeight);
 		this.passengerCapacity = passengerCapacity;
@@ -23,7 +24,7 @@ public class BuffetCar extends Car {
 
 	@Override
 	public String toString() {
-		return "<br>BuffetCar [passengerCapacity=" + passengerCapacity + ", comfortableness="
-				+ comfortableness + "]<br>";
+		return "<br>BuffetCar [passengerCapacity=" + passengerCapacity + ", comfortableness=" + comfortableness
+				+ "]<br>";
 	}
 }

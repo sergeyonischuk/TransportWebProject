@@ -3,17 +3,16 @@ package model;
 import java.util.List;
 
 public class PassengerTrain {
-	
+
 	private Locomotive locomotive;
-	private List <Car> list;
+	private List<Car> list;
 	private int trainNumber;
-	
+
 	public PassengerTrain(Locomotive locomotive, List<Car> list, int trainNumber) {
 		this.locomotive = locomotive;
 		this.list = list;
 		this.trainNumber = trainNumber;
 	}
-
 
 	public Locomotive getLocomotive() {
 		return locomotive;
@@ -43,6 +42,5 @@ public class PassengerTrain {
 	public String toString() {
 		return "PassengerTrain [locomotive=" + locomotive + ", list=" + list + ", trainNumber=" + trainNumber + "]";
 	}
-	
-	
+
 }
