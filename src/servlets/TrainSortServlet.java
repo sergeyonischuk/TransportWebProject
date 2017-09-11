@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import model.Car;
 import model.PassengerTrain;
-import services.TrainService;
 import texts.Messages;
 import trainTest.FakeTrainCreator;
 
@@ -25,7 +24,7 @@ public class TrainSortServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private ConcurrentHashMap<String, PassengerTrain> trains = new ConcurrentHashMap<>();
 	private FakeTrainCreator fakeTrainC = new FakeTrainCreator();
-	TrainService ts = new TrainService();
+
 
 	@Override
 	public void init() throws ServletException {

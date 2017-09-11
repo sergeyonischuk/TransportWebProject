@@ -31,6 +31,7 @@ public class SearchTrainServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
 		String trainNumber = request.getParameter("trainNumber");
 		PassengerTrain train = trains.get(trainNumber);
 
